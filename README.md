@@ -76,8 +76,6 @@ During development, I encountered challenges in integrating the different sortin
    npm install @testing-library/user-event --save-dev
 ```
 
-> Make sure you config the above in package.json and vite.config respectively
-> 
 > TESTING: npm test FileName.test.tsx
 
 ### Useful resources
