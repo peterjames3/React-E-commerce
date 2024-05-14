@@ -86,7 +86,12 @@ During development, I encountered challenges in integrating the different sortin
 
 - https://www.Fontendmentor.com/
 
+## Screenshot
+- [1_my-screenshot](./src/assets/Screenshot%20from%202024-05-14%2010-42-24.png)
+- [2_my-screenshot](./src/assets/Screenshot%20from%202024-05-14%2010-42-38.png)
+- [3_my-screenshot](./src/assets/Screenshot%20from%202024-05-14%2010-42-47.png)
+- [4_my-screenshot](./src/assets/Screenshot%20from%202024-05-14%2010-43-16.png)
 ## Author
-
+- [Hanzo](https://6642861b275d19323f162770--zingy-dieffenbachia-3fdb05.netlify.app/)
 
 - Twitter - [@Hanzo_q](https://www.twitter.com/@Hanzo_q)
