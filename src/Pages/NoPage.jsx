@@ -1,26 +1,38 @@
-import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 function NoPage() {
-    const location = useNavigate();
-    const navigateHome = () => {
-      setTimeout(() => {
-        location("/")
-      }, 300)
-    }
+  const location = useNavigate();
+  const navigateHome = () => {
+    setTimeout(() => {
+      location("/");
+    }, 300);
+  };
 
   return (
-    <motion.section className='h-dvh w-full bg-slate-600 flex items-center justify-center'
-    initial={{opacity:0}}
-    animate={{opacity:1}}
-    exit={{opcaity:0}}    >
-      <div className=' max-w-6xl  space-y-4 items-center '>
-      <h1 className='text-3xl font-bold text-white text-center'>Error 404 :No Page Found</h1>
-      <button onClick={navigateHome}type="button" className="text-xl py-2 px-6 font-semibold rounded-md bg-orange-600  hover:bg-orange-700 hover:cursor-pointer">Go Back to Home</button>
+    <motion.section
+      className="grid h-screen place-content-center bg-white px-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opcaity: 0 }}
+    >
+      <div className="text-center">
+        <h1 className="text-9xl font-black text-gray-200">404</h1>
+        <p class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Uh-oh!
+        </p>
+
+        <p class="mt-4 text-gray-500">We can't find that page.</p>
+        <button
+          onClick={navigateHome}
+          type="button"
+          className="transitiona-all rounded-md border border-orange-600 px-5 py-3 text-xl font-medium delay-300 hover:cursor-pointer hover:bg-orange-700 hover:text-white"
+        >
+          Go Back Home
+        </button>
       </div>
-     
     </motion.section>
-  )
+  );
 }
 
-export default NoPage
+export default NoPage;

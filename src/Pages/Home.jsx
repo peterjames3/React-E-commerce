@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import PrimaryBtn from "../Components/PrimaryBtn";
 import HeroImg from "../assets/image-product-1.jpg";
 import { useNavigate, useLocation } from "react-router-dom";
 import Mission from "../Components/Mission";
 import { motion } from "framer-motion";
+import AddUser from '../Components/AddUser';
+
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -27,17 +29,17 @@ const Home = () => {
 
   return (
     <motion.div
-      className="max-w-7xl mx-auto mt-0 "
+      className="wrapper"
       intial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="w-full flex flex-col-reverse ss:flex-row gap-4 justify-between px-2 mt-5 mx-auto">
-        <div className="w-full space-x-5 ss:w-1/2 space-y-8 ss:pt-10">
-          <h1 className="text-xl font-poppins text-orange-300 pt-5 px-5 ss:px-10">
+      <div className="mx-auto mt-5 flex w-full flex-col-reverse justify-between gap-4 px-2 ss:flex-row">
+        <div className="w-full space-x-5 space-y-8 ss:w-1/2 ss:pt-10">
+          <h1 className="px-5 pt-5 font-poppins text-xl text-orange-300 ss:px-10">
             Our Summer Collection
           </h1>
-          <h2 className="text-7xl font-semibold font-poppins leading-1 text-black">
+          <h2 className="leading-1 font-poppins text-5xl md:text-7xl font-semibold text-black md:text-7xl">
             The New Arrival <span className="text-orange-600">Sport</span> Shoes
           </h2>
 
@@ -47,38 +49,39 @@ const Home = () => {
           </p>
           <PrimaryBtn text="show now" onClick={navigateShop} />
 
-          <div className="flex items-center w-[60%] justify-between gap-3">
+          <div className="flex w-[60%] items-center justify-between gap-3">
             <div>
-              <p className="font-semibold text-2xl font-Kumbh">
+              <p className="font-Kumbh text-2xl font-semibold">
                 1K<span className="text-4xl">+</span>
               </p>
               <p className="text-gray-500">Brands</p>
             </div>
             <div>
-              <p className="font-semibold text-2xl font-Kumbh">
+              <p className="font-Kumbh text-2xl font-semibold">
                 500K<span className="text-4xl">+</span>
               </p>
               <p className="text-gray-500">shops</p>
             </div>
             <div>
-              <p className="font-semibold text-2xl font-Kumbh">
+              <p className="font-Kumbh text-2xl font-semibold">
                 250K<span className="text-4xl">+</span>
               </p>
               <p className="text-gray-500">Customers</p>
             </div>
           </div>
         </div>
-        <div className="w-full ss:w-1/2 ss:h-[35rem] rounded-[2rem] overflow-hidden">
+        <div className="w-full overflow-hidden rounded-[2rem] ss:h-[35rem] ss:w-1/2">
           <img
             src={HeroImg}
             alt="heroimg"
             loading="lazy"
-            className="w-full h-full object-cover "
+            className="h-full w-full object-cover"
           />
         </div>
       </div>
       <Mission />
-   
+      <AddUser />
+    
     </motion.div>
   );
 };

@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef, Suspense } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import TestItems from "../Components/TestItems";
 import ReactPaginate from "react-paginate";
 import { useLocation } from "react-router-dom";
+import ProductIntro from '../Components/ProductIntro'
 
 const Collection = () => {
   const [pageCount, setPageCount] = useState(1);
@@ -59,7 +60,7 @@ const Collection = () => {
     const filtered = items.filter(
       (item) =>
         item.rating.rate >= ratingFilter &&
-        item.title.toLowerCase().includes(query ? query.toLowerCase() : "")
+        item.title.toLowerCase().includes(query ? query.toLowerCase() : ""),
     );
     setCurrentItems(filtered);
   }, [items, ratingFilter, query]);
@@ -76,7 +77,7 @@ const Collection = () => {
       setPageCount(Math.ceil(items.length / itemsPerPage));
     } else {
       const filtered = items.filter(
-        (item) => item.category.toLowerCase() === normalizedCategory
+        (item) => item.category.toLowerCase() === normalizedCategory,
       );
       setCurrentItems(filtered);
       setPageCount(Math.ceil(filtered.length / itemsPerPage)); // Update pageCount
@@ -98,13 +99,14 @@ const Collection = () => {
 
   return (
     <motion.div
-      className="w-full"
+      className="wrapper"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
+      <ProductIntro />
       {error ? (
-        <div className="w-full bg-red-100 text-red-700 text-center py-3">
+        <div className="w-full bg-red-100 py-3 text-center text-red-700">
           <h1 className="text-2xl font-semibold">
             Error occurred during fetching
           </h1>
@@ -113,18 +115,18 @@ const Collection = () => {
           </button>
         </div>
       ) : (
-        <div className="grid ss:grid-flow-col mt-16 bg-[#f4f4f4] w-full ">
-          <div className="row-span-3 col-span-4 ss:w-[15rem] md:w-[20rem] border border-slate-700 flex-flex-col divide-y-2 divide-slate-400 hover:bg-slate-600 transition-all delay-300">
-            <div className="w-full px-10 py-2 sm:py-2 sm:px-3">
+        <div className="mt-16 grid w-full ss:grid-flow-col">
+          <div className="flex-flex-col col-span-4 row-span-3 divide-y-2 divide-slate-400 border border-slate-700 transition-all delay-300 ss:w-[15rem] md:w-[20rem]">
+            <div className="w-full px-10 py-2 sm:px-3 sm:py-2">
               <h6 className="text-xl font-medium text-black">Apply Filters</h6>
-              <div className="flex pt-5 px-3 flex-col space-y-4 *:font-medium *:text-xl *:rounded-md *:py-3 *:px-4 *:border *:border-slate-400 *:transition-all delay-300">
+              <div className="flex flex-col space-y-4 px-3 pt-5 delay-300 *:rounded-md *:border *:border-slate-400 *:px-4 *:py-3 *:text-xl *:font-medium *:transition-all">
                 {categoryButtons.map((category) => (
                   <button
                     key={category}
                     onClick={() => handleCategoryFilter(category)}
                     className={`${
                       activeCategory === category
-                        ? "bg-orange-600  text-white"
+                        ? "bg-orange-600 text-white"
                         : "bg-transparent text-black"
                     }`}
                   >
@@ -133,17 +135,17 @@ const Collection = () => {
                 ))}
               </div>
             </div>
-            <div className="w-full py-2 px-5">
-              <h6 className="text-xl font-medium text-black ">Store reviews</h6>
+            <div className="w-full px-5 py-2">
+              <h6 className="text-xl font-medium text-black">Store reviews</h6>
               <p className="text-black">Based on a 5-star rating system</p>
-              <div className="flex flex-col space-y-4 pt-3 px-10 ss:px-2">
+              <div className="flex flex-col space-y-4 px-10 pt-3 ss:px-2">
                 {[3.0, 3.5, 4.0, 4.5, 5.0].map((rating) => (
                   <div className="w-full text-black" key={`rating-${rating}`}>
-                    <label className="bg-slate-400 flex justify-between rounded-md py-3 px-4">
+                    <label className="flex justify-between rounded-md bg-slate-400 px-4 py-3">
                       <input
                         type="radio"
                         name="rating"
-                        className="accent-indigo-500 justify-between px-2 font-medium"
+                        className="justify-between px-2 font-medium accent-indigo-500"
                         onChange={() => handleRatingChange(rating)}
                       />
                       <span>{rating} & up</span>
@@ -153,8 +155,8 @@ const Collection = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4  py-2  flex  flex-col space-y-4 ss:space-y-0 ss:flex-row justify-between px-4 items-center">
-            <nav className="text-3xl font-semibold text-center ss:text-end">
+          <div className="col-span-4 flex flex-col items-center justify-between space-y-4 px-4 py-2 ss:flex-row ss:space-y-0">
+            <nav className="text-center text-3xl font-semibold ss:text-end">
               Shop to your heart content!
             </nav>
             <nav>
@@ -163,19 +165,19 @@ const Collection = () => {
                 ref={inputRef}
                 value={query}
                 placeholder="Search for products..."
-                className="py-2 px-2 rounded-lg outline-none border border-orange-600"
+                className="rounded-lg border border-orange-600 px-2 py-2 outline-none"
                 onChange={(e) => setQuery(e.target.value)}
               />
             </nav>
           </div>
-          <div className="grid col-span-4 grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 grid-rows-1 gap-9 px-5 py-7">
+          <div className="col-span-4 grid grid-cols-1 grid-rows-1 gap-5 px-5 py-7 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {<TestItems currentItems={currentItems} />}
           </div>
         </div>
       )}
 
       <ReactPaginate
-        className="pagination-container flex gap-5 divide-x divide-slate-300 justify-center items-center *:border"
+        className="pagination-container flex items-center justify-center gap-5 divide-x divide-slate-300 *:border"
         breakLabel="..."
         nextLabel="next "
         onClick={handlePageClick}

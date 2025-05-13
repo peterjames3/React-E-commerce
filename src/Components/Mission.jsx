@@ -13,7 +13,7 @@ const Mission = () => {
   const handleMouseEnter = (index) => {
     setTimeout(() => {
       setHoverStates((prev) =>
-        prev.map((state, idx) => (idx === index ? true : state))
+        prev.map((state, idx) => (idx === index ? true : state)),
       );
     }, 300);
   };
@@ -22,7 +22,7 @@ const Mission = () => {
   const handleMouseleave = (index) => {
     setTimeout(() => {
       setHoverStates((prev) =>
-        prev.map((state, idx) => (idx === index ? false : state))
+        prev.map((state, idx) => (idx === index ? false : state)),
       );
     }, 300);
   };
@@ -60,13 +60,21 @@ const Mission = () => {
   ];
 
   return (
-    <section className="max-w-7xl mt-5 py-5 px-5 bg-[#3a190b] *:bg-[#402013] grid grid-cols-1 grid-rows-4 xs:grid-cols-2 xs:grid-rows-2  ss:grid-cols-2 ss:grid-rows-2 md:grid-cols-4 md:grid-rows-1 gap-4 *:rounded-[1.2rem] *:text-white *:py-8 *:px-7 *:space-y-4 hover:*:cursor-pointer hover:*:bg-orange-900 *:transition-all *:delay-300">
+    <section className="mt-10 grid max-w-[1400px] grid-cols-1 grid-rows-4 gap-4 bg-[#3a190b] px-5 py-5 *:space-y-4 *:rounded-[1.2rem] *:bg-[#402013] *:px-7 *:py-8 *:text-white *:transition-all *:delay-300 hover:*:cursor-pointer hover:*:bg-orange-900 xs:grid-cols-2 xs:grid-rows-2 ss:grid-cols-2 ss:grid-rows-2 md:grid-cols-4 md:grid-rows-1">
       {contents.map((content, index) => (
-        <div key={content.id} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseleave(index)}>
-          <nav className={`text-4xl rounded-full bg-[#4f3125] size-[4rem] flex items-center justify-center ${hoverState[index] ? 'text-orange-600' : 'text-white'}`}>
+        <div
+          key={content.id}
+          onMouseEnter={() => handleMouseEnter(index)}
+          onMouseLeave={() => handleMouseleave(index)}
+        >
+          <nav
+            className={`flex size-[4rem] items-center justify-center rounded-full bg-[#4f3125] text-4xl ${hoverState[index] ? "text-orange-600" : "text-white"}`}
+          >
             {icons[index]}
           </nav>
-          <h3 className="text-2xl font-poppins font-semibold text-white">{content.title}</h3>
+          <h3 className="font-poppins text-2xl font-semibold text-white">
+            {content.title}
+          </h3>
           <p>{content.text}</p>
         </div>
       ))}

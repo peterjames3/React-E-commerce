@@ -103,7 +103,7 @@ const Contact = () => {
     window.scrollTo(0, 0) //Reset scroll postion to top
   }, [location])
   return (
-    <motion.div className="max-w-7xl my-10  mx-auto min-h-[35rem] flex flex-1 flex-col gap-4  ss:flex-row sm:gap-6 rounded-lg "
+    <motion.div className="wrapper min-h-[35rem] flex flex-1 flex-col gap-4  ss:flex-row sm:gap-6 rounded-lg "
     intial={{opacity:0}}
     animate={{opacity:1}}
     exit={{opacity: 0}}

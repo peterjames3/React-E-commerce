@@ -4,11 +4,16 @@ import { toast } from "react-toastify";
 export const CartContext = createContext();
 
 export default function CartProvider({ children }) {
+  const [isLogin, setIsLogin] = useState(false)
   const [isCounter, setIsCounter] = useState(1);
   const [cartItems, setCartItems] = useState(() => {
     const localData = localStorage.getItem("cartItems");
     return localData ? JSON.parse(localData) : [];
   });
+
+  const toggleLogin = ()=>{
+    setIsLogin(prevState => !prevState)
+  }
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -104,6 +109,8 @@ export default function CartProvider({ children }) {
   return (
     <CartContext.Provider
       value={{
+        isLogin,
+        toggleLogin,
         isCounter,
         setIsCounter,
         cartItems,
